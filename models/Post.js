@@ -21,3 +21,5 @@ Post.init(
 );
 
 // work on your own branches, then have a develop site
+
+module.exports = Post;

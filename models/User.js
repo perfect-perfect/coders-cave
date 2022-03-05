@@ -23,3 +23,5 @@ User.init(
     name: "user",
   }
 );
+
+module.exports = User;
