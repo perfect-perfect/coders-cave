@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "coders-cave",
   "version": "1.0.0",
   "description": "testing",
@@ -95,7 +94,4 @@
     "url": "https://github.com/perfect-perfect/coders-cave/issues"
   },
   "homepage": "https://github.com/perfect-perfect/coders-cave#readme"
-=======
-  "dependencies": {
-    "express": "^4.17.3"
-  }
+}
