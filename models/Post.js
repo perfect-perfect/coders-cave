@@ -11,6 +11,21 @@ Post.init(
       autoIncrement: true,
       allowNull: false,
     },
+    title: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    post_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -21,4 +36,3 @@ Post.init(
 );
 
 module.exports = Post;
-// work on your own branches, then have a develop site
