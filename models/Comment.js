@@ -37,3 +37,5 @@ Comment.init(
     name: "comment",
   }
 );
+
+module.exports = Comment;
