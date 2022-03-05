@@ -38,3 +38,5 @@ Post.init(
 module.exports = Post;
 
 // work on your own branches, then have a develop site
+
+module.exports = Post;
