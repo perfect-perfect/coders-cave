@@ -12,7 +12,11 @@ User.init(
       allowNull: false,
     },
     username: {
-      id: DataTypes.STRING,
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataType.STRING,
       allowNull: false,
     },
   },
