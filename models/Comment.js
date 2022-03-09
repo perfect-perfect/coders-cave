@@ -12,7 +12,7 @@ Comment.init(
       allowNull: false,
     },
     comment_text: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
