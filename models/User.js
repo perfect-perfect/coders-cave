@@ -29,8 +29,13 @@ User.init(
     timestamps: false,
     underscored: true,
     name: "user",
+<<<<<<< HEAD
     freezeTableName: true,
+=======
+    freezeTableName: true
+>>>>>>> 8e28a37f7fd4a3e4b3bb66156d16589562521931
   }
 );
 
+// export
 module.exports = User;

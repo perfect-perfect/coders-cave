@@ -1,6 +1,6 @@
 // import all models
-const Post = require("./Post");
 const User = require("./User");
+const Post = require("./Post");
 const Vote = require("./Vote");
 const Comment = require("./Comment");
 
@@ -11,7 +11,7 @@ User.hasMany(Post, {
 
 Post.belongsTo(User, {
   foreignKey: "user_id",
-  as: "posting_user",
+  //as: "posting_user",
   onDelete: "SET NULL",
 });
 
@@ -34,16 +34,18 @@ User.hasMany(Vote, {
 
 Post.hasMany(Vote, {
   foreignKey: "post_id",
+  as: "post_votes"
 });
 
 Comment.belongsTo(User, {
   foreignKey: "user_id",
+  as: "user_comments",
   onDelete: "SET NULL",
 });
 
 Comment.belongsTo(Post, {
   foreignKey: "post_id",
-  as: "commented_post",
+  as: "post_comments",
   onDelete: "SET NULL",
 });
 
@@ -55,6 +57,7 @@ User.hasMany(Comment, {
 
 Post.hasMany(Comment, {
   foreignKey: "post_id",
+  as: "post_comments"
 });
 
 module.exports = { User, Post, Vote, Comment };
