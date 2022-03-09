@@ -1,3 +1,5 @@
+const submitBtn = document.querySelector(".submit");
+
 async function newFormHandler(event) {
   event.preventDefault();
 
@@ -22,6 +24,4 @@ async function newFormHandler(event) {
   }
 }
 
-document
-  .querySelector(".new-post-form")
-  .addEventListener("submit", newFormHandler);
+submitBtn.addEventListener("submit", newFormHandler);

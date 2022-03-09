@@ -32,6 +32,7 @@ Post.init(
     timestamps: true,
     underscored: true,
     name: "post",
+    freezeTableName: true,
   }
 );
 
