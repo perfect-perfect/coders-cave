@@ -20,6 +20,17 @@ const sess = {
   }),
 };
 
+// var execPHP = require("./execphp.js");
+
+// execPHP.phpFolder = "C:\\Users\\rrk92\\Projects\\coders-cave\\php";
+
+// app.use("*.php", function (request, response, next) {
+//   execPHP.parseFile(request.originalUrl, function (phpResult) {
+//     response.write(phpResult);
+//     response.end();
+//   });
+// });
+
 app.use(session(sess));
 
 const helpers = require("./utils/helpers");
