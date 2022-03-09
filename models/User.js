@@ -12,7 +12,7 @@ User.init(
       allowNull: false,
     },
     username: {
-      id: DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
