@@ -35,6 +35,7 @@ Comment.init(
     timeStamps: false,
     underscored: true,
     name: "comment",
+    freezeTableName: true
   }
 );
 
