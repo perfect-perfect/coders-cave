@@ -21,7 +21,9 @@ User.init(
     timestamps: false,
     underscored: true,
     name: "user",
+    freezeTableName: true
   }
 );
 
+// export
 module.exports = User;
