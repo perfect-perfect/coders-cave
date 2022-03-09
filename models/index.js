@@ -15,8 +15,6 @@ Post.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
-
-
 Vote.belongsTo(User, {
   foreignKey: "user_id",
   as: "voting_user",
