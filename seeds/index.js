@@ -1,29 +1,26 @@
-const User = require("../models/User");
-const Post = require("../models/Post");
-const Comment = require("../models/Comment");
+const seedUsers = require('./user-seeds');
+const seedPosts = require('./post-seeds');
+const seedComments = require('./comment-seeds');
+const seedVotes = require('./vote-seeds');
 
-User.hasMany(Post, {
-  foreignKey: "user_id",
-});
+const sequelize = require('../config/connection');
 
-Post.belongsTo(User, {
-  foreignKey: "user_id",
-});
+const seedAll = async () => {
+  await sequelize.sync({ force: true });
+  console.log('--------------');
+  await seedUsers();
+  console.log('--------------');
 
-Comment.belongsTo(User, {
-  foreignKey: "user_id",
-});
+  await seedPosts();
+  console.log('--------------');
 
-User.hasMany(Comment, {
-  foreignKey: "user_id",
-});
+  await seedComments();
+  console.log('--------------');
 
-Comment.belongsTo(Post, {
-  foreignKey: "post_id",
-});
+  await seedVotes();
+  console.log('--------------');
 
-Post.hasMany(Comment, {
-  foreignKey: "post_id",
-});
+  process.exit(0);
+};
 
-module.exports = { User, Post, Comment };
+seedAll();

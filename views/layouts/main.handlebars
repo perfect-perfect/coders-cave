@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Tech News</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <header>
+      <nav class="nav">
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
+      <div class="welcome-container">
+        <h1 class="welcome__text">Welcome!</h1>
+      </div>
+    </header>
+    <main class="main-container">
+      <div class="carousel" data-carousel>
+        <ul class="data-slides" data-slides>
+          <li class=" slide post-container" data-active>
+            {{{ body }}}
+          </li>
+          <li class="slide news-container">
+            <h1>Tech News</h1>
+          </li>
+        </ul>
+        <div class="left__toggle toggle" data-carousel-button="prev"></div>
+        <div class="right__toggle toggle" data-carousel-button="next"></div>
+      </div>
+    </main>
+  
+  
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+  <script src="javascript/animations.js"></script>
+  <script src="javascript/news-api.js"></script>
+  <script src="javascript/carousel.js"></script>
+</body>
+
+</html>
