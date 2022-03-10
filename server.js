@@ -20,6 +20,8 @@ const sess = {
   }),
 };
 
+app.use(session(sess));
+
 // var execPHP = require("./execphp.js");
 
 // execPHP.phpFolder = "C:\\Users\\rrk92\\Projects\\coders-cave\\php";
@@ -30,8 +32,6 @@ const sess = {
 //     response.end();
 //   });
 // });
-
-app.use(session(sess));
 
 const helpers = require("./utils/helpers");
 
