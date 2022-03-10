@@ -66,12 +66,12 @@ Post.hasMany(Comment, {
   foreignKey: "post_id",
 });
 
-User.hasMany(Chat, {
-  foreignKey: "chat_id",
-});
+// User.hasMany(Chat, {
+//   foreignKey: "chat_id",
+// });
 
-Chat.belongsTo(User, {
-  foreignKey: "chat_id",
-});
+// Chat.belongsTo(User, {
+//   foreignKey: "chat_id",
+// });
 
 module.exports = { User, Post, Vote, Comment };
