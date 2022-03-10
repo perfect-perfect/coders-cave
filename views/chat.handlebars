@@ -1,0 +1,9 @@
+<div class="chat-window">
+    <div class="chat-history">
+        {{#each chat}}
+            {{>chat-info chat}}
+        {{/each}}
+    </div>
+    <input class="add-comment"></input>
+    <button class="submit">Submit!</button>
+</div>
