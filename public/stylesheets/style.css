@@ -465,3 +465,20 @@ Carousel
   width: 90%;
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container h1 {
+  margin-bottom: 10px;
+}
+
+.form-container a {
+  margin-bottom: 20px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
