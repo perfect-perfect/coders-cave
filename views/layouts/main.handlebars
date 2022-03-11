@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coder Cave</title>
+  <title>Coder's Cave</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-
 <body>
+  <div class="wrapper">
     <header>
       <nav class="nav">
-        <h1> Coder's Cave</h1>
         {{#if loggedIn}}
         <a href="/dashboard">dashboard</a>
         <button id="logout" class="btn-no-style">logout</button>
@@ -24,21 +22,13 @@
       </div>
     </header>
     <main class="main-container">
-      <div class="carousel" data-carousel>
-        <ul class="data-slides" data-slides>
-          <li class=" slide post-container" data-active>
-            {{{ body }}}
-          </li>
-          <li class="slide news-container">
-            <h1>Coder's Cave</h1>
-          </li>
-          <li class="slide chat-container">
-          </li>
-        </ul>
-        <div class="left__toggle toggle" data-carousel-button="prev"></div>
-        <div class="right__toggle toggle" data-carousel-button="next"></div>
-      </div>
+        <div class="post-container" data-active>
+          {{{ body }}}
+        </div>
+        <div class="news-container">
+        </div>
     </main>
+  </div>
   
   
   {{#if loggedIn}}
@@ -48,5 +38,4 @@
   <script src="javascript/news-api.js"></script>
   <script src="javascript/carousel.js"></script>
 </body>
-
 </html>
