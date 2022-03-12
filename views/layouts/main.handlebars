@@ -10,13 +10,19 @@
   <div class="wrapper">
     <header>
       <nav class="nav">
-        <a href="Chat"></a>
+        <a href="/">Home</a>
+        <a href="Chat">Chat</a>
         {{#if loggedIn}}
         <a href="/dashboard">Dashboard</a>
         <button id="logout" class="btn-no-style">Logout</button>
         <a href="/chat">Chat</a>
         {{else}}
+        <a href="/login">Log In</a>
         {{/if}}
+        <div class="search-container">
+          <input type="text" name="search-box" class="search-box">
+          <button class="search-btn">Search</button>
+        </div>
       </nav>
       <div class="welcome-container">
         <h1 class="welcome__text">Welcome!</h1>
@@ -37,6 +43,6 @@
   {{/if}}
   <script src="javascript/animations.js"></script>
   <script src="javascript/news-api.js"></script>
-  <script src="javascript/carousel.js"></script>
+  <script src="javascript/search.js"></script>
 </body>
 </html>

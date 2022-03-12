@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Post, User, Comment, Vote } = require("../models");
+const { body, validationResult } = require("express-validator/check");
 
 // get all posts for homepage
 router.get("/", (req, res) => {
@@ -35,7 +36,6 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-
       res.render("homepage", {
         posts,
         loggedIn: req.session.loggedIn,
@@ -47,7 +47,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// get single post
 router.get("/post/:id", (req, res) => {
   Post.findOne({
     where: {
@@ -106,6 +105,22 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.post("/search", body("searchTerm").isLength({ min: 1 }), (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      success: false,
+      errors: errors.array(),
+    });
+  }
+  Post.findAll({}) // query Post model for results with title that contains keyword
+    .then((results) => {
+      const posts = results.map((result) => result.get({ plain: true }));
+      res.render("homepage", posts);
+    })
+    .catch();
 });
 
 module.exports = router;
