@@ -294,6 +294,8 @@ Carousel
   height: 100%;
   width: 50%;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
   /* overflow: scroll; */
 }
 .slide {
