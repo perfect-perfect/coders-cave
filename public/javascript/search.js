@@ -13,9 +13,9 @@ const search = async (event) => {
   // This is creating a bad request. Not a server-side error
   await fetch("/search", {
     method: "POST",
-    body: {
+    body: JSON.stringify({
       searchTerm,
-    },
+    }),
     headers: {
       "Content-Type": "application/json",
     },

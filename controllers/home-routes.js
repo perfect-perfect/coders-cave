@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Vote } = require("../models");
-const { body, validationResult } = require("express-validator/check");
+const { Post, User, Comment } = require("../models");
+const { check, validationResult } = require("express-validator/check");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 // get all posts for homepage
 router.get("/", (req, res) => {
@@ -107,20 +109,31 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.post("/search", body("searchTerm").isLength({ min: 1 }), (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      errors: errors.array(),
+router.post(
+  "/search",
+  // check(req.param.term).isLength({ min: 1 }).trim().escape(),
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
+    }
+    Post.findAll({
+      where: {
+        title: {
+          [Op.like]: "%" + req.body.searchTerm + "%",
+        },
+      },
+    }).then((searchResults) => {
+      console.log(searchResults[0]);
+      const results = searchResults.map((result) =>
+        result.get({ plain: true })
+      );
+      res.render("homepage", results);
     });
   }
-  Post.findAll({}) // query Post model for results with title that contains keyword
-    .then((results) => {
-      const posts = results.map((result) => result.get({ plain: true }));
-      res.render("homepage", posts);
-    })
-    .catch();
-});
+);
 
 module.exports = router;

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const { Post, User, Comment, Vote } = require("../../models");
 const withAuth = require("../../utils/auth");
+const { check, validationResult } = require("express-validator/check");
 
 // get all users
 router.get("/", (req, res) => {
@@ -86,18 +87,27 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", withAuth, (req, res) => {
-  Post.create({
-    title: req.body.title,
-    post_url: req.body.post_url,
-    user_id: req.session.user_id,
-  })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+router.post(
+  "/",
+  withAuth,
+  [
+    check("title").isLength({ min: 1 }).trim().escape(),
+    check("post_url").isLength({ min: 1 }).trim().escape(),
+    check("user_id").isNumeric().trim().escape(),
+  ],
+  (req, res) => {
+    Post.create({
+      title: req.body.title,
+      post_url: req.body.post_url,
+      user_id: req.session.user_id,
+    })
+      .then((dbPostData) => res.json(dbPostData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+);
 
 router.put("/upvote", withAuth, (req, res) => {
   Post.upvote(
@@ -111,29 +121,34 @@ router.put("/upvote", withAuth, (req, res) => {
     });
 });
 
-router.put("/:id", withAuth, (req, res) => {
-  Post.update(
-    {
-      title: req.body.title,
-    },
-    {
-      where: {
-        id: req.params.id,
+router.put(
+  "/:id",
+  withAuth,
+  [check("title").isLength({ min: 1 }).trim().escape()],
+  (req, res) => {
+    Post.update(
+      {
+        title: req.body.title,
       },
-    }
-  )
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id" });
-        return;
+      {
+        where: {
+          id: req.params.id,
+        },
       }
-      res.json(dbPostData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+    )
+      .then((dbPostData) => {
+        if (!dbPostData) {
+          res.status(404).json({ message: "No post found with this id" });
+          return;
+        }
+        res.json(dbPostData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+);
 
 router.delete("/:id", withAuth, (req, res) => {
   console.log("id", req.params.id);
