@@ -128,10 +128,8 @@ router.post(
       },
     }).then((searchResults) => {
       console.log(searchResults[0]);
-      const results = searchResults.map((result) =>
-        result.get({ plain: true })
-      );
-      res.render("homepage", results);
+      const posts = searchResults.map((result) => result.get({ plain: true }));
+      res.render("homepage", posts);
     });
   }
 );
