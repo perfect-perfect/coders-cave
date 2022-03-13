@@ -148,13 +148,22 @@ header > a {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 20%;
   width: 100%;
   position: absolute;
   top: 0;
   background-color: rgba(100, 100, 100, 0.75)
 }
+
+.search-container {
+  display: flex;
+}
+
+.search-container > input {
+  margin-right: 5px;
+}
+
 .nav > a, .nav > button {
   margin-top: 5px;
   margin-left: 10px;
@@ -410,4 +419,7 @@ Carousel
 .comments {
   display: flex;
   flex-direction: column;
+}
+.login-form {
+  margin-bottom: 30px;
 }
