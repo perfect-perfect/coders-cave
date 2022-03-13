@@ -46,6 +46,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    question: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     post_url: {
       type: DataTypes.STRING,
       allowNull: false,

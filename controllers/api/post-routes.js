@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
       'id',
+      'question',
       'post_url',
       'title',
       'created_at',
@@ -43,6 +44,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
+      'question',
       'post_url',
       'title',
       'created_at',
@@ -80,6 +82,7 @@ router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
     title: req.body.title,
+    question: req.body.question,
     post_url: req.body.post_url,
     user_id: req.session.user_id
   })

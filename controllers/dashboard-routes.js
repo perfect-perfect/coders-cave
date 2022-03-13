@@ -13,6 +13,7 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
+      'question',
       'post_url',
       'title',
       'created_at',
