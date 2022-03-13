@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment, Vote } = require("../../models");
-const { body, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator/check");
 
 // get all users
 router.get("/", (req, res) => {
@@ -56,19 +56,24 @@ router.get("/:id", (req, res) => {
 
 router.post(
   "/",
-  body("email").isEmail().normalizeEmail(),
-  body("password").isLength({ min: 5 }),
-  body("username").custom((username) => {
-    User.findAll({
-      where: {
-        username: username,
-      },
-    }).then((user) => {
-      if (user.length > 0) {
-        throw "Username already in use";
-      }
-    });
-  }),
+  [
+    check("email", "Please enter a valid email")
+      .exists()
+      .isEmail()
+      .normalizeEmail()
+      .trim()
+      .escape(),
+    check("password", "Password must be at least five characters long")
+      .exists()
+      .isLength({ min: 5 })
+      .trim()
+      .escape(),
+    check("username", "Username cannot be empty")
+      .exists()
+      .not()
+      .isEmpty()
+      .escape(),
+  ],
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -99,41 +104,45 @@ router.post(
   }
 );
 
-router.post("/login", body("email").isEmail(), (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      errors: errors.array(),
+router.post(
+  "/login",
+  [check("email").exists().isEmail().escape(), check("password").escape()],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
+    }
+
+    User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    }).then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(400).json({ message: "No user with that email address!" });
+        return;
+      }
+
+      const validPassword = dbUserData.checkPassword(req.body.password);
+
+      if (!validPassword) {
+        res.status(400).json({ message: "Incorrect password!" });
+        return;
+      }
+
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.json({ user: dbUserData, message: "You are now logged in!" });
+      });
     });
   }
-
-  User.findOne({
-    where: {
-      email: req.body.email,
-    },
-  }).then((dbUserData) => {
-    if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address!" });
-      return;
-    }
-
-    const validPassword = dbUserData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res.status(400).json({ message: "Incorrect password!" });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
-
-      res.json({ user: dbUserData, message: "You are now logged in!" });
-    });
-  });
-});
+);
 
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
