@@ -1,59 +1,59 @@
-const sequelize = require('../config/connection');
-const { User, Post } = require('../models');
+const sequelize = require("../config/connection");
+const { User } = require("../models");
 
 const userdata = [
   {
-    username: 'alesmonde0',
-    email: 'nwestnedge0@cbc.ca',
-    password: 'password123'
+    username: "perfect-perfect1",
+    email: "perfect-perfect1@nbc.com",
+    password: "password123",
   },
   {
-    username: 'jwilloughway1',
-    email: 'rmebes1@sogou.com',
-    password: 'password123'
+    username: "perfect-perfect2",
+    email: "perfect-perfect2@yahoo.com",
+    password: "password",
   },
   {
-    username: 'iboddam2',
-    email: 'cstoneman2@last.fm',
-    password: 'password123'
+    username: "perfect-perfect3",
+    email: "perfect-perfect3@perfect.com",
+    password: "password",
   },
   {
-    username: 'dstanmer3',
-    email: 'ihellier3@goo.ne.jp',
-    password: 'password123'
+    username: "perfect-perfect4",
+    email: "perfect-perfect4@gmail.com",
+    password: "password",
   },
   {
-    username: 'djiri4',
-    email: 'gmidgley4@weather.com',
-    password: 'password123'
+    username: "perfect-perfect5",
+    email: "perfect-perfect5@hotmail.com.com",
+    password: "password",
   },
   {
-    username: 'msprague5',
-    email: 'larnout5@imdb.com',
-    password: 'password123'
+    username: "perfect-perfect6",
+    email: "perfect-perfect6@hotmail.com",
+    password: "password",
   },
   {
-    username: 'mpergens6',
-    email: 'hnapleton6@feedburner.com',
-    password: 'password123'
+    username: "perfect-perfect7",
+    email: "perfect-perfect7@perfect.com",
+    password: "password",
   },
   {
-    username: 'tpenniell7',
-    email: 'kperigo7@china.com.cn',
-    password: 'password123'
+    username: "perfect-perfect8",
+    email: "perfect-perfect8@gmail.com",
+    password: "password",
   },
   {
-    username: 'msabbins8',
-    email: 'lmongain8@google.ru',
-    password: 'password123'
+    username: "perfect-perfect9",
+    email: "perfect-perfect9@googlemail.com",
+    password: "password",
   },
   {
-    username: 'jmacarthur9',
-    email: 'bsteen9@epa.gov',
-    password: 'password123'
-  }
+    username: "perfect-perfect10",
+    email: "perfect-perfect10@google.com",
+    password: "password",
+  },
 ];
 
-const seedUsers = () => User.bulkCreate(userdata, {individualHooks: true});
+const seedUsers = () => User.bulkCreate(userdata, { individualHooks: true });
 
 module.exports = seedUsers;
