@@ -12,7 +12,7 @@ https://pure-everglades-43557.herokuapp.com/
 ## Usage
 
 The website is used to expand and share coding knowledge through questions and news.
-![Alt text](../src/cc.jpg)
+![Screenshot](./public/cc.JPG)
 
 ## Credits
 
