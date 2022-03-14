@@ -11,6 +11,7 @@ https://pure-everglades-43557.herokuapp.com/
 
 ## Usage
 
+Heroku has some errors with the seeding. It is deployed and works correctly but for the best use of the website please download the code from the github repository, https://github.com/perfect-perfect/coders-cave. Then, change .env to DB_NAME="newsfeed_db", DB_USER="root", DB_PW="your password" and save it. In the terminal type "npm i", use mysql to source the newsfeed_db database, exit mysql and type "npm start" in the terminal. Run the website at localhost:3001. The code is fully functional through the github code.
 The website is used to expand and share coding knowledge through questions and news.
 ![Screenshot](./public/cc.JPG)
 
