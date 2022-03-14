@@ -2,36 +2,37 @@
 
 ## Description
 
-This website was created to give coders a relaxed space to progress and share your knowledge as a coder. Coder's Cave has a section to catch up on local news and new developments in the tech world. The other section is a place to make posts about coding topics to either ask questions, share knowledge, and discuss any coding topic. The last section is a live chat to be used as a fast pace way to conversate with fellow coders. This project can be seen at <add heroku link here>.
+This website was created to give coders a relaxed space to progress and share your knowledge as a coder. Coder's Cave has a section to catch up on local news and new developments in the tech world. The other section is a place to make posts about coding topics to either ask questions, share knowledge, and discuss any coding topic. The last section is a live chat to be used as a fast pace way to conversate with fellow coders. This project can be seen at https://pure-everglades-43557.herokuapp.com/.
 
 ## Installation
 
 To get the deployment enviroment to run, copy and paste the link below.
-<add heroku link here>
+https://pure-everglades-43557.herokuapp.com/
 
 ## Usage
 
 The website is used to expand and share coding knowledge through questions and news.
+![Alt text](../src/cc.jpg)
 
 ## Credits
 
-*Gilberto Jesus Covarrubias Merino: https://github.com/perfect-perfect
-*Edward Plecha: https://github.com/NXF1LT3R
-*Ryan Kray: https://github.com/rrich-kray
-*Sabrina Zanin: https://github.com/Brinabean
-*Web Development Simplified: https://github.com/WebDevSimplified/Realtime-Simple-Chat-App
-*CWRU Coding Bootcamp Module 14
+- Gilberto Jesus Covarrubias Merino: https://github.com/perfect-perfect
+- Edward Plecha: https://github.com/NXF1LT3R
+- Ryan Kray: https://github.com/rrich-kray
+- Sabrina Zanin: https://github.com/Brinabean
+- Web Development Simplified: https://github.com/WebDevSimplified/Realtime-Simple-Chat-App
+- CWRU Coding Bootcamp Module 14
 
 ## Utilizes:
 
-*HTML
-*CSS
-*JavaScript
-*JQuery
-*Handlebars
-*Express
-*SQL
-*Socket.io
+- HTML
+- CSS
+- JavaScript
+- JQuery
+- Handlebars
+- Express
+- SQL
+- Socket.io
 
 ### License
 
