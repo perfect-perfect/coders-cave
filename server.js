@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
-const io = require("socket.io")(3000);
+const io = require("socket.io")(process.env.port || 3000);
 const bodyParser = require("body-parser");
 
 const users = {};
