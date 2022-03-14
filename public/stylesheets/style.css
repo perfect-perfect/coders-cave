@@ -137,11 +137,7 @@ header {
   height: 40%;
   width: 100%;
   position: relative;
-<<<<<<< HEAD
   background-image: url("../src/pic.jpg");
-=======
-  background-image: url("../pic.jpg");
->>>>>>> ff2d461b332dcc6f4de5427a45d59243a9e42b38
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -307,11 +303,8 @@ Carousel
   height: 100%;
   width: 50%;
   overflow: scroll;
-<<<<<<< HEAD
   display: flex;
   flex-direction: column;
-=======
->>>>>>> ff2d461b332dcc6f4de5427a45d59243a9e42b38
   /* overflow: scroll; */
 }
 .slide {
