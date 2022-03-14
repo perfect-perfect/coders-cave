@@ -1,10 +1,4 @@
-const welcomePhrases = [
-  "Welcome",
-  "bienvenue",
-  "witamy",
-  "croeso",
-  "स्वागत हे (svaagat he)",
-];
+const welcomePhrases = ["Welcome"];
 
 setInterval(() => {
   const welcomeContainer = document.querySelector(".welcome-container");
